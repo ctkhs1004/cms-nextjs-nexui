@@ -13,6 +13,7 @@ const authOptions: NextAuthOptions = {
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         } as ClientType),
     ],
+    secret: process.env.NEXTAUTH_SECRET,
     session: {
         strategy: "jwt",
         maxAge: 30 * 24 * 60 * 60,

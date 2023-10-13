@@ -1,25 +1,13 @@
 'use client'
 import {Input, Image, Button} from "@nextui-org/react";
 import React, {useState} from "react";
-import { useSession, signIn, signOut } from 'next-auth/react';
+import {useSession, signIn, signOut, getSession} from 'next-auth/react';
 import { NextPage } from 'next';
 // import Router from 'next/router';
 export default function SignInComponents() {
 	const [key, setKey] = useState('');
 	const { data: session } = useSession();
 	console.log(session);
-
-	// const handleLoginClick = (key: string, path:string) => {
-	// 	console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-	// 	console.log('handleLoginClick is called', key);
-	// 	if (key.startsWith('nsec')) {
-	// 		// ここでログインロジックを実装します
-	// 		console.log('Logging in...');
-	// 	} else {
-	// 		alert('The private key must start with nsec');
-	// 	}
-	// 	// Router.push(path);
-	// };
 	return (
 		<div　className="min-h-screen flex items-center justify-center ">
 			<>
@@ -38,7 +26,7 @@ export default function SignInComponents() {
 			        !session && (
 			            <div>
 			                <p>ログインしていません</p>
-			                <button onClick={() => signIn()}>ログイン</button>
+			                <button onClick={() => signIn('google', {}, { prompt: 'login' })}>ログイン</button>
 			            </div>
 			        )
 			    }
@@ -65,7 +53,6 @@ export default function SignInComponents() {
 		{/*			</div>*/}
 		{/*		)*/}
 		{/*	}*/}
-
 		</div>
 
 	);
