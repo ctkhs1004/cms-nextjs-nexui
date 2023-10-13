@@ -1,14 +1,14 @@
-import { NextRequest } from "next/server";
-import { twMerge } from "tailwind-merge";
-import { type ClassValue, clsx } from "clsx";
-import axios, { AxiosError, AxiosResponse, AxiosRequestConfig } from "axios";
+import {NextRequest} from "next/server";
+import {twMerge} from "tailwind-merge";
+import {type ClassValue, clsx} from "clsx";
+import axios, {AxiosError, AxiosResponse, AxiosRequestConfig} from "axios";
 
 import {
     ClientException,
     ServerException,
     TimeoutException,
 } from "@/lib/exceptions";
-import { ErrorResponse, SuccessResponse } from "@/types";
+import {ErrorResponse, SuccessResponse} from "@/types";
 
 export const cn = (...inputs: ClassValue[]) => {
     return twMerge(clsx(inputs));
@@ -50,9 +50,7 @@ export const makeErrorResponse = (
     return response;
 };
 
-export const makeHttpRequest = async ({
-                                          ...args
-                                      }: AxiosRequestConfig): Promise<AxiosResponse> => {
+export const makeHttpRequest = async ({...args}: AxiosRequestConfig): Promise<AxiosResponse> => {
     try {
         const response: AxiosResponse = await axios(args);
         return response;
