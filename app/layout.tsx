@@ -7,7 +7,6 @@ import {Footer} from '@/components/Footer/index'
 import { Navbar } from '@/components/NavBar/navbar';
 import clsx from 'clsx';
 import {getSession} from "next-auth/react";
-import {session} from "next-auth/core/routes";
 
 export const metadata: Metadata = {
 	title: {
@@ -26,7 +25,8 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function RootLayout({ children}: { children: React.ReactNode; session : any}) {
+export default function RootLayout({ children}: { children: React.ReactNode; }) {
+
 
 	return (
 		<html lang='ja' suppressHydrationWarning>
@@ -34,7 +34,7 @@ export default function RootLayout({ children}: { children: React.ReactNode; ses
 			<body className={clsx(
 					'min-h-screen bg-background font-sans antialiased',
 					fontSans.variable)}>
-				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark'}} session={getSession()}>
+				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark'}}>
 					<div className='relative flex flex-col h-screen'>
 						<Navbar />
 						<main className='container mx-auto max-w-7xl pt-16 px-6 flex-grow'>
