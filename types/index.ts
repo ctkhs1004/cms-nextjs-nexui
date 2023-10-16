@@ -16,6 +16,10 @@ export type ErrorResponse = {
   message: string;
 };
 
+export interface RequestParams {
+  [key: string]: any;
+}
+
 export interface UserData {
   user: {
     id: number;
