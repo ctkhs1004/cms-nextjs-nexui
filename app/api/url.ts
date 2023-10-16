@@ -6,3 +6,5 @@ interface keyMap {
 const url: keyMap = {
     getUserInfo: '/api/getUserInfo',
 };
+
+export default url;

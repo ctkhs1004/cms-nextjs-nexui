@@ -1,0 +1,13 @@
+{
+  "status" : 0,
+  "error" : "",
+  "message" : "",
+  "data": {
+    "user": {
+      "id": 0,
+      "name": "たなかたろう",
+      "age": 29,
+      "email": "cho.takahashi@xfuture.cc"
+    }
+  }
+}

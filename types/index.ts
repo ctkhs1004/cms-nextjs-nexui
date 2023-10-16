@@ -15,3 +15,12 @@ export type ErrorResponse = {
   status: "error";
   message: string;
 };
+
+export interface UserData {
+  user: {
+    id: number;
+    name: string;
+    age: number;
+    email: string;
+  };
+}
