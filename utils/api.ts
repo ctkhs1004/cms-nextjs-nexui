@@ -1,4 +1,5 @@
 import axios, {AxiosInstance, AxiosResponse} from 'axios';
+import Error from "@/app/error";
 
 const client: AxiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -13,10 +14,10 @@ export const getApi = async (url: string, param?: string): Promise<any> => {
         console.log(res);
         return res.data;
     } catch (error: any) {
-        if (error.response.data.code == '') {
+        if (error.response && error.response.data && error.response.data.code == '') {
             alert(error.response.data.message)
         } else {
-
+            throw error;
         }
     }
 };
