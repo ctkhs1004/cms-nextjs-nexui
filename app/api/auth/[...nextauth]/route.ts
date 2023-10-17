@@ -28,22 +28,23 @@ const authOptions: NextAuthOptions = {
                 if(!credentials ?.email || !credentials ?.password){
                     throw new Error('Invalid credentials');
                 }
-                const user: any = await getApi(url.getUserAuth)
-                console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" + user);
-                if (!user || !user?.password) {
+                const userInfo: any = await getApi(url.getUserAuth)
+                console.log("credentials <<<<<<<<< " + credentials.email)
+                console.log("<<<<<<<<<<<USER<<<<<<<<<<<<<<<<<<<<< " + userInfo.user.email);
+                if (!userInfo.user || !userInfo?.user.password) {
                     throw new Error('Invalid credentials');
                 }
 
-                const isCorrectPassword = await bcrypt.compare(
-                    credentials.password,
-                    user.password
-                );
+                // const isCorrectPassword = await bcrypt.compare(
+                //     credentials.password,
+                //     userInfo.user.password
+                // );
+                //
+                // if (!isCorrectPassword) {
+                //     throw new Error('Invalid credentials');
+                // }
 
-                if (!isCorrectPassword) {
-                    throw new Error('Invalid credentials');
-                }
-
-                return user;
+                return userInfo;
             }
         }),
     ],

@@ -17,8 +17,10 @@ const DemoAuthForm = () => {
     })
 
     const onSubmit: SubmitHandler<FieldValues> = async (data, e) => {
-        e?.preventDefault()
-        console.log("<<<<<<<<<<<<<<<")
+        //
+        const userDemo = await getApi(url.getUserAuth);
+        console.log(userDemo.user.password)
+
        signIn('credentials', {
            ...data,
            redirect: false
