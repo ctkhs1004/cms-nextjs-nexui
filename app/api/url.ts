@@ -5,6 +5,7 @@ interface keyMap {
 // API Endpoint
 const url: keyMap = {
     getUserInfo: '/api/getUserInfo',
+    getUserAuth: '/api/getUserAuth'
 };
 
 export default url;
