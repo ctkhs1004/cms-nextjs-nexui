@@ -4,6 +4,8 @@ import {getApi} from "@/utils/api";
 import url from "@/app/api/url";
 import {UserData} from "@/types";
 import React, {useState} from "react";
+import {callback, signin} from "next-auth/core/routes";
+import {signIn} from "next-auth/react";
 
 const DemoAuthForm = () => {
     const [apiData, setApiData] = useState<UserData | null>(null)
@@ -14,22 +16,22 @@ const DemoAuthForm = () => {
         }
     })
 
-    const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        try {
-            const result: any = await getApi(url.getUserAuth);
-            setApiData(result);
-            console.log(apiData);
-        } catch (error) {
-            console.error('An error occurred while fetching the data.', error);
-        }
-        if (!apiData || apiData?.user.password !== data.password) {
-            alert('Invalid your email or password');
-        }
+    const onSubmit: SubmitHandler<FieldValues> = async (data, e) => {
+        e?.preventDefault()
+        console.log("<<<<<<<<<<<<<<<")
+       signIn('credentials', {
+           ...data,
+           redirect: false
+       }).then((callback) => {
+           console.log("THEN <<<<<<<<<<<<<<<")
+           if(callback ?.error){
+               alert("Invalid")
+           }
 
-        if (apiData?.user.password === data.password) {
-            alert('Success');
-        }
-
+           if(callback ?.ok && !callback ?.error){
+               alert('Logged in');
+           }
+       })
     }
 
     return (

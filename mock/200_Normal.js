@@ -15,6 +15,12 @@ app.get('/api/getUserAuth', (req, res) => {
     const mockData = require('./res/db.json');
     res.status(200).json(mockData);
 })
+
+app.get('/api/getUserKey', (req, res) => {
+    const mockData = require('./res/key.json');
+    res.status(200).json(mockData);
+})
+
 app.listen(port, () => {
     console.log(`Mock server is running on port ${port}`);
 });
