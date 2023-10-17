@@ -35,15 +35,15 @@ const DemoAuthForm = () => {
     return (
         <>
             <form onSubmit={handleSubmit(onSubmit)}>
-                <label className="block tet-sm font-medium leading-6 text-white-900">Email</label>
+                <label className="block text-sm font-medium leading-6 text-white-900">Email</label>
                 <div className="p-3 rounded-lg shadow-md w-96">
-                    <input className="w-full max-w-xs rounded" placeholder="email"
+                    <input className="w-full max-w-xs rounded h-8" placeholder="email"
                            type="text" {...register('email', {required: 'Email is required', pattern: /^\S+@\S+$/i})} />
                 </div>
 
-                <label className="block tet-sm font-medium leading-6 text-white-900">Password</label>
+                <label className="block text-sm font-medium leading-6 text-white-900">Password</label>
                 <div className="p-3 rounded-lg shadow-md w-96">
-                    <input className="w-full max-w-xs rounded" placeholder="password"
+                    <input className="w-full max-w-xs rounded h-8" placeholder="password"
                            type="password" {...register('password', {
                         required: 'Password is required',
                     })} />
