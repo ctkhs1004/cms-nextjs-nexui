@@ -1,6 +1,7 @@
 {
   "user" : {
     "email": "xf@xf.com",
-    "password": "p@sword"
+    "password": "p@sword",
+    "key": "nsec1234"
   }
 }

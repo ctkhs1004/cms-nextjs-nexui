@@ -23,9 +23,7 @@ const DemoAuthForm = () => {
            ...data,
            redirect: false
        }).then((callback) => {
-           console.log("callback ->" + callback ?.error)
            if(callback ?.error){
-               //toast.error('Invalid')
                alert("Invalid")
            }
 

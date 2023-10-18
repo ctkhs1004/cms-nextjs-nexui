@@ -4,7 +4,7 @@ import {siteConfig} from '@/config/site';
 import {fontSans} from '@/config/fonts';
 import {Providers} from './providers';
 import {Footer} from '@/components/Footer/index'
-import clsx from 'clsx';
+//import clsx from 'clsx';
 import AuthContext from '@/app/context/AuthContext';
 import React from "react";
 
@@ -26,14 +26,10 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({children}: { children: React.ReactNode; }) {
-
-
     return (
         <html lang='ja' suppressHydrationWarning>
         <head/>
-        <body className={clsx(
-            'min-h-screen bg-background font-sans antialiased',
-            fontSans.variable)}>
+        <body className="min-h-screen bg-background font-sans antialiased">
         <AuthContext>
             <Providers themeProps={{attribute: 'class', defaultTheme: 'dark'}}>
                 <div className='relative flex flex-col h-screen'>

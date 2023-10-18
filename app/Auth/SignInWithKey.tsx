@@ -3,45 +3,28 @@ import {Input, Button} from "@nextui-org/react";
 import React, {useState, useEffect, useCallback} from "react";
 import {useRouter} from 'next/navigation';
 import WebSocket from 'ws';
+import { signIn } from "next-auth/react";
 
 const SignInWithKey = () => {
     const [key, setKey] = useState('');
     const router = useRouter();
 
-    // const startWebSocket = (key: string) => {
-    //     const socket = new WebSocket('ws://localhost:8081');
-    //
-    //     socket.onopen = () => {
-    //         console.log('WebSocket connected');
-    //     };
-    //
-    //     socket.onmessage = (key) => {
-    //         const privateKey = key;
-    //         console.log(`Received key: ${privateKey}`);
-    //     };
-    //
-    //     socket.onclose = (event) => {
-    //         if (event.wasClean) {
-    //             console.log(`Connection closed cleanly, code=${event.code}, reason=${event.reason}`);
-    //         } else {
-    //             console.error(`Connection died`);
-    //         }
-    //     };
-    //
-    //     socket.onerror = (error) => {
-    //         console.error(`WebSocket Error: ${error.message}`);
-    //     };
-    // }
-
     const handleLoginClick = (key: string) => {
-        console.log('>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>');
-        console.log('handleLoginClick is called', key);
-        if (key.startsWith('nsec')) {
-           // startWebSocket(key);
-            alert('Valid');
-        } else {
+        if (!key.startsWith('nsec')) {
             alert('The private key must start with nsec');
         }
+        signIn('credentials', {
+            key,
+            redirect: false
+        }).then((callback) => {
+            if(callback ?.error){
+                alert("Invalid Key")
+            }
+
+            if(callback ?.ok && !callback ?.error){
+                router.push("/Home")
+            }
+        })
     };
     return (
         <div className="p-8 rounded-lg shadow-md w-96">
