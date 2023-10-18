@@ -4,6 +4,7 @@ import {siteConfig} from '@/config/site';
 import {fontSans} from '@/config/fonts';
 import {Providers} from './providers';
 import {Footer} from '@/components/Footer/index'
+import { Toaster } from 'react-hot-toast';
 //import clsx from 'clsx';
 import AuthContext from '@/app/context/AuthContext';
 import React from "react";
@@ -38,6 +39,7 @@ export default function RootLayout({children}: { children: React.ReactNode; }) {
                     </main>
                     <Footer/>
                 </div>
+                <Toaster/>
             </Providers>
         </AuthContext>
         </body>

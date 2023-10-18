@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
 import { RequestParams } from '@/types/index'
+import { toast } from 'react-hot-toast';
 
 const client: AxiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
@@ -14,9 +15,9 @@ client.interceptors.response.use(
     },
     (error) => {
         if (error.response && error.response.data && error.response.data.message) {
-            alert(error.response.data.message);
+            toast.error(error.response.data.message);
         } else {
-            alert('システムエラー！');
+            toast.error('システムエラー！');
         }
         return Promise.reject(error);
     }

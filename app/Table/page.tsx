@@ -47,22 +47,23 @@ const columns = [
 export default function TablePage() {
 	const [selectedKeys, setSelectedKeys] = React.useState();
 	return (
-		<Table
-			aria-label="Controlled table example with dynamic content"
-			selectionMode="multiple"
-			selectedKeys={selectedKeys}
-			onSelectionChange={setSelectedKeys}
-		>
-			<TableHeader columns={columns}>
-				{(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
-			</TableHeader>
-			<TableBody items={rows}>
-				{(item) => (
-					<TableRow key={item.key}>
-						{(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
-					</TableRow>
-				)}
-			</TableBody>
-		</Table>
+		<div></div>
+		// <Table
+		// 	aria-label="Controlled table example with dynamic content"
+		// 	selectionMode="multiple"
+		// 	selectedKeys={selectedKeys}
+		// 	onSelectionChange={setSelectedKeys}
+		// >
+		// 	<TableHeader columns={columns}>
+		// 		{(column) => <TableColumn key={column.key}>{column.label}</TableColumn>}
+		// 	</TableHeader>
+		// 	<TableBody items={rows}>
+		// 		{(item) => (
+		// 			<TableRow key={item.key}>
+		// 				{(columnKey) => <TableCell>{getKeyValue(item, columnKey)}</TableCell>}
+		// 			</TableRow>
+		// 		)}
+		// 	</TableBody>
+		// </Table>
 	);
 }
