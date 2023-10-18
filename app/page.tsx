@@ -1,10 +1,10 @@
 'use client'
-import AuthForm from "./Auth/AuthForm";
+import AuthPage from "@/app/Auth/page";
 
 export default function AppPage() {
     return (
         <div>
-            <AuthForm />
+            <AuthPage />
         </div>
 
     );

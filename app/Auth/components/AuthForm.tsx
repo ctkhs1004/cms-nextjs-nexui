@@ -1,8 +1,8 @@
 'use client'
 import React, {useState, useEffect, useCallback} from "react";
 import {useRouter} from 'next/navigation';
-import DemoAuthForm from "@/app/Auth/DemoAuthFrom";
-import SignInWithKey from "@/app/Auth/SignInWithKey";
+import DemoAuthForm from "@/app/Auth/components/DemoAuthFrom";
+import SignInWithKey from "@/app/Auth/components/SignInWithKey";
 import {SessionProvider, useSession} from "next-auth/react";
 
 type Variant = 'KEY' | 'LOGIN';

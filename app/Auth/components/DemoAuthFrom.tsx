@@ -1,8 +1,8 @@
 'use client'
 import {FieldValues, SubmitHandler, useForm} from 'react-hook-form';
-import {getApi} from "@/utils/api";
-import url from "@/app/api/url";
-import {UserData} from "@/types";
+import {getApi} from "../../../utils/api";
+import url from "../../api/url";
+import {UserData} from "../../../types";
 import React, {useState} from "react";
 import {signIn} from "next-auth/react";
 import toast from "react-hot-toast";
