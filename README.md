@@ -22,7 +22,7 @@
 │   └── Buttons
 │       └── sample.tsx
 ├── utils                      # APIやユーティリティ関数を配置（DB接続系も配置？）
-│   ├── api.ts                 # apiへのリクエスト処理等
+│   ├── httpRequest.ts                 # apiへのリクエスト処理等
 │   └── utils.ts
 ├── style
 │    └── globals.css

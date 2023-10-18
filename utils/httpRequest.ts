@@ -28,7 +28,6 @@ export const getApi = async (url: string, param?: RequestParams): Promise<any> =
         const res: AxiosResponse = await client.get(url);
         return res.data;
     } catch (error: any) {
-        // Since the interceptor already handles the error, you can simply re-throw it here.
         throw error;
     }
 };

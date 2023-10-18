@@ -3,7 +3,7 @@ import {title} from '@/components/primitives';
 import React, {useEffect, useState} from 'react';
 import {Loading} from "@/components/Loading";
 import {UserData} from "@/types";
-import {getApi} from "@/utils/api";
+import {getApi} from "@/utils/httpRequest";
 import url from "@/app/api/url";
 import ErrorComponent from '@/app/error';
 import {useRouter} from 'next/navigation';
