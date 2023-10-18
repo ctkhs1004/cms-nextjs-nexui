@@ -4,10 +4,12 @@ import {getApi} from "@/utils/api";
 import url from "@/app/api/url";
 import {UserData} from "@/types";
 import React, {useState} from "react";
-import {callback, signin} from "next-auth/core/routes";
 import {signIn} from "next-auth/react";
+import toast from "react-hot-toast";
+import { useRouter } from "next/navigation"
 
 const DemoAuthForm = () => {
+    const router = useRouter();
     const [apiData, setApiData] = useState<UserData | null>(null)
     const {register, handleSubmit, formState: {errors}} = useForm<FieldValues>({
         defaultValues: {
@@ -17,21 +19,18 @@ const DemoAuthForm = () => {
     })
 
     const onSubmit: SubmitHandler<FieldValues> = async (data, e) => {
-        //
-        const userDemo = await getApi(url.getUserAuth);
-        console.log(userDemo.user.password)
-
        signIn('credentials', {
            ...data,
            redirect: false
        }).then((callback) => {
-           console.log("THEN <<<<<<<<<<<<<<<")
+           console.log("callback ->" + callback ?.error)
            if(callback ?.error){
+               //toast.error('Invalid')
                alert("Invalid")
            }
 
            if(callback ?.ok && !callback ?.error){
-               alert('Logged in');
+               router.push('/Home')
            }
        })
     }

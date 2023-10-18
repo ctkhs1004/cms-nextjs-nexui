@@ -7,6 +7,7 @@ import {Footer} from '@/components/Footer/index'
 import { Navbar } from '@/components/NavBar/navbar';
 import clsx from 'clsx';
 import {getSession} from "next-auth/react";
+import React from "react";
 
 export const metadata: Metadata = {
 	title: {
@@ -36,7 +37,6 @@ export default function RootLayout({ children}: { children: React.ReactNode; }) 
 					fontSans.variable)}>
 				<Providers themeProps={{ attribute: 'class', defaultTheme: 'dark'}}>
 					<div className='relative flex flex-col h-screen'>
-						<Navbar />
 						<main className='container mx-auto max-w-7xl  px-6 flex-grow'>
 							{children}
 						</main>
