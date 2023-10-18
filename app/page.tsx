@@ -1,10 +1,10 @@
 'use client'
-import SignIn from "./Auth/page";
+import AuthForm from "./Auth/AuthForm";
 
 export default function AppPage() {
     return (
         <div>
-            <SignIn />
+            <AuthForm />
         </div>
 
     );

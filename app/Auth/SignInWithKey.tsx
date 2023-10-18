@@ -32,7 +32,7 @@ const SignInWithKey = () => {
             <Input
                 isRequired
                 type="text"
-                label="pubKey"
+                label="privateKey"
                 className="max-w-xs"
                 value={key}
                 onChange={(e) => setKey(e.target.value)}

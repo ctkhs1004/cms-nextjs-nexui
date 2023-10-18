@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation"
 
 
 export default function HeaderSignOut () {
-    const signOutClick = async () => {
-        await signOut({callbackUrl: "/"});
+    const signOutClick = () => {
+        signOut({callbackUrl: "/"});
     }
     return (
          <div>
