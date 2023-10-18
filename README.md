@@ -42,23 +42,16 @@
 
 ```
 #### 参考サイト
--https://www.nitaking.dev/react-directory-structure-2021
--https://zenn.dev/necscat/articles/d5d9b7a3f859d7
--https://dev.to/vadorequest/a-2021-guide-about-structuring-your-next-js-project-in-a-flexible-and-efficient-way-472
+- https://www.nitaking.dev/react-directory-structure-2021
+- https://zenn.dev/necscat/articles/d5d9b7a3f859d7
+- https://dev.to/vadorequest/a-2021-guide-about-structuring-your-next-js-project-in-a-flexible-and-efficient-way-472
+- https://nerdcave.com/tailwind-cheat-sheet
 ### 使用技術・ツール
 - [Next.js 13](https://nextjs.org/docs/getting-started)
 - [NextUI v2](https://nextui.org/)
 - [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
 - [next-themes](https://github.com/pacocoursey/next-themes)
-
-## How to Use
-
-```bash
-npx create-next-app -e https://github.com/nextui-org/next-app-template
-```
 
 ### Install dependencies
 
@@ -72,6 +65,3 @@ npm install
 npm run dev
 ```
 
-## License
-
-Licensed under the [MIT license](https://github.com/nextui-org/next-app-template/blob/main/LICENSE).
