@@ -8,13 +8,14 @@ import {title, subtitle} from "@/components/primitives";
 import {GithubIcon} from "@/components/icons";
 import {Footer} from "@/components/Footer";
 import {Navbar} from '@/components/NavBar/navbar';
+import HeaderSignOut from "@/components/Header/HeaderSignOut";
 
 export default function HomePage() {
     return (
         <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
             <div className='relative flex flex-col h-screen'>
                 <main className='container mx-auto max-w-7xl  px-6 flex-grow'>
-                    <Navbar/>
+                    <HeaderSignOut />
                     <div className="inline-block max-w-lg text-center justify-center">
                         <h1 className={title()}>Make&nbsp;</h1>
                         <h1 className={title({color: "violet"})}>beautiful&nbsp;</h1>

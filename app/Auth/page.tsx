@@ -1,14 +1,20 @@
 'use client'
 import React, {useState, useEffect, useCallback} from "react";
 import {useRouter} from 'next/navigation';
-import DemoAuthForm from "@/app/signIn/DemoAuthFrom";
-import SignInWithKey from "@/app/signIn/SignInWithKey";
+import DemoAuthForm from "@/app/Auth/DemoAuthFrom";
+import SignInWithKey from "@/app/Auth/SignInWithKey";
+import {SessionProvider, useSession} from "next-auth/react";
 
 type Variant = 'KEY' | 'LOGIN';
 export default function SignIn() {
-    const [key, setKey] = useState('');
     const [variant, setVariant] = useState<Variant>('KEY')
+    const session = useSession();
     const router = useRouter();
+    useEffect(() => {
+        if (session?.status === 'authenticated') {
+            router.push('/Home')
+        }
+    }, [session?.status, router]);
 
     const toggleVariant = useCallback(() => {
         if (variant === "KEY") {
@@ -30,7 +36,7 @@ export default function SignIn() {
                     </div>
                 )}
                 {variant === 'KEY' && (
-                   <SignInWithKey />
+                    <SignInWithKey/>
                 )}
             </div>
             <div className="flex gap-2 justify-center text-sm  px-2 text-gray-500">
