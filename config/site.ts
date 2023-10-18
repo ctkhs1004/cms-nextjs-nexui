@@ -26,7 +26,7 @@ export const siteConfig = {
         },
         {
             label: "SignOut",
-            href: "/SignOut",
+            href: "/",
         }
 
     ],
