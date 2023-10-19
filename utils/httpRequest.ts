@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosResponse } from 'axios';
-import { RequestParams } from '@/types/index'
+import { RequestParams, UserData } from '@/types/index'
 import { toast } from 'react-hot-toast';
 
 const client: AxiosInstance = axios.create({
@@ -24,6 +24,15 @@ client.interceptors.response.use(
 );
 
 export const getApi = async (url: string, param?: RequestParams): Promise<any> => {
+    try {
+        const res: AxiosResponse = await client.get(url);
+        return res.data;
+    } catch (error: any) {
+        throw error;
+    }
+};
+
+export const getUserApi = async (url: string, param?: RequestParams): Promise<any> => {
     try {
         const res: AxiosResponse = await client.get(url);
         return res.data;

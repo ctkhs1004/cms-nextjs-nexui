@@ -11,7 +11,16 @@ app.get('/api/getUserInfo', (req, res) => {
     const mockData = require('./res/200_Normal.json');
     res.status(200).json(mockData);
 });
+
+//認証用
 app.get('/api/getUserAuth', (req, res) => {
+    const mockData = require('./res/db.json');
+    res.status(200).json(mockData);
+})
+
+//ログインユーザー取得用
+app.get('/api/getUserAuth/:email', (req, res) => {
+    const userId = req.params.id;
     const mockData = require('./res/db.json');
     res.status(200).json(mockData);
 })

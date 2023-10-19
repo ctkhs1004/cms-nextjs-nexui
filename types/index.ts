@@ -22,7 +22,7 @@ export interface RequestParams {
 
 export interface UserData {
   user: {
-    id: number;
+    id?: string | null | undefined;
     name: string;
     age: number;
     email: string;

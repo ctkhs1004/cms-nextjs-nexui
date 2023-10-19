@@ -4,7 +4,7 @@ import {siteConfig} from '@/config/site';
 import {fontSans} from '@/config/fonts';
 import {Providers} from './providers';
 import {Footer} from '@/components/Footer/index'
-import { Toaster } from 'react-hot-toast';
+import {Toaster} from 'react-hot-toast';
 //import clsx from 'clsx';
 import AuthContext from '@/app/context/AuthContext';
 import React from "react";
@@ -26,12 +26,14 @@ export const metadata: Metadata = {
     },
 };
 
-export default function RootLayout({children}: { children: React.ReactNode; }) {
+export default function RootLayout({children}: {
+    children: React.ReactNode;
+}) {
     return (
         <html lang='ja' suppressHydrationWarning>
         <head/>
-        <body className="min-h-screen bg-background font-sans antialiased">
         <AuthContext>
+            <body className="min-h-screen bg-background font-sans antialiased">
             <Providers themeProps={{attribute: 'class', defaultTheme: 'dark'}}>
                 <div className='relative flex flex-col h-screen'>
                     <main className='container mx-auto max-w-7xl  px-6 flex-grow'>
@@ -41,8 +43,8 @@ export default function RootLayout({children}: { children: React.ReactNode; }) {
                 </div>
                 <Toaster/>
             </Providers>
+            </body>
         </AuthContext>
-        </body>
         </html>
     );
 }
