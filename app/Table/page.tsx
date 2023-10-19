@@ -1,7 +1,7 @@
 'use client';
 import React from "react";
-import {Table, TableHeader, TableColumn, TableBody, TableRow, TableCell, getKeyValue} from "@nextui-org/react";
 import dynamic from "next/dynamic";
+import UserTable from "@/components/Table/table";
 
 const Chart = dynamic(
 	() => import('@/components/Charts').then((mod) => mod.Steam),
@@ -11,12 +11,19 @@ const Chart = dynamic(
 );
 
 export default function TablePage() {
+	const sampleUsers = [
+		{ id: 1, name: 'Alice', role: 'Developer', status: 'Active' },
+		{ id: 2, name: 'Bob', role: 'Manager', status: 'Vacation' },
+		// ... more users
+	];
+
 	return (
 		<div>
 			<div>
 				<Chart/>
 			</div>
-
+			<div></div>
+			<UserTable users={sampleUsers} />
 		</div>
 	);
 }
