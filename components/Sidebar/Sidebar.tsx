@@ -1,16 +1,11 @@
 import getCurrentUser from "@/utils/getCurrentUser";
+import HeaderSignOut from "@/components/Header/HeaderSignOut";
+import SidebarNav from "./SidebarNav";
 
-async function Sidebar({children}: {
-    children: React.ReactNode
-}) {
-    const currentUser = await getCurrentUser();
-
+const  Sidebar = () => {
     return (
-        <div className="h-full">
-            <main className="lg:pl-20 h-full">
-                <h1>Side Bar</h1>
-                {children}
-            </main>
+        <div className="h-screen bg-gray-800 w-60 fixed">
+                 <SidebarNav/>
         </div>
     )
 }

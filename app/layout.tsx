@@ -36,7 +36,7 @@ export default function RootLayout({children}: {
         <AuthContext>
             <Providers themeProps={{attribute: 'class', defaultTheme: 'dark'}}>
                 <div className='relative flex flex-col h-screen'>
-                    <main className='container mx-auto max-w-7xl  px-6 flex-grow'>
+                    <main className='w-full container mx-auto max-w-7xl flex-grow ml-0'>
                         {children}
                     </main>
                     <Footer/>

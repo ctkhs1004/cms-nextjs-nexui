@@ -1,13 +1,11 @@
-import HeaderSignOut from "@/components/Header/HeaderSignOut";
+import EmptyState from "@/components/Sidebar/EmptyState";
+
 
 export default function HomePage() {
     return (
-        <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-            <div className='relative flex flex-col h-screen'>
-                <main className='container mx-auto max-w-7xl  px-6 flex-grow'>
-                    <HeaderSignOut />
-                </main>
+        <div className="h-full">
+            <div className="h-full flex flex-col">
             </div>
-        </section>
+        </div>
     );
 }

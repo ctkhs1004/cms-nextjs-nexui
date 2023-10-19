@@ -22,7 +22,7 @@
     "paths": {
       "@/*": ["./*"]
     },
-    "types": ["clsx", "@nextui-org/react",]
+    "types": ["clsx", "@nextui-org/react","react-bootstrap","@fortawesome/react-fontawesome"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
