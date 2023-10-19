@@ -1,14 +1,14 @@
 import '@/styles/globals.css';
-import Sidebar from "@/components/Sidebar/Sidebar"
+import SideNavBar from "@/components/Sidebar/SideNavBar"
+import React from "react";
 
 export default function HomeLayout({ children }: { children: React.ReactNode }) {
     return (
         <div className="w-full p-0">
-            <Sidebar>
+            <SideNavBar/>
             <div className="h-full">
                 {children}
             </div>
-            </Sidebar>
         </div>
             
     );
