@@ -32,8 +32,8 @@ export default function RootLayout({children}: {
     return (
         <html lang='ja' suppressHydrationWarning>
         <head/>
+        <body className="min-h-screen bg-background font-sans antialiased">
         <AuthContext>
-            <body className="min-h-screen bg-background font-sans antialiased">
             <Providers themeProps={{attribute: 'class', defaultTheme: 'dark'}}>
                 <div className='relative flex flex-col h-screen'>
                     <main className='container mx-auto max-w-7xl  px-6 flex-grow'>
@@ -43,8 +43,8 @@ export default function RootLayout({children}: {
                 </div>
                 <Toaster/>
             </Providers>
-            </body>
         </AuthContext>
+        </body>
         </html>
     );
 }
