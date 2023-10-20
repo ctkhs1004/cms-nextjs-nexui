@@ -3,6 +3,7 @@ import React from "react";
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownItem, DropdownTrigger, Dropdown, DropdownMenu, Avatar} from "@nextui-org/react";
 import {AcmeLogo} from "@/components/NavBar/AcmeLogo";
 import {SearchIcon} from "@/components/NavBar/SearchIcon";
+import HeaderSignOut from "@/components/Header/HeaderSignOut";
 
 const NavBar =() => {
   return (
@@ -68,7 +69,7 @@ const NavBar =() => {
             <DropdownItem key="configurations">Configurations</DropdownItem>
             <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
             <DropdownItem key="logout" color="danger">
-              Log Out
+              <HeaderSignOut />
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
