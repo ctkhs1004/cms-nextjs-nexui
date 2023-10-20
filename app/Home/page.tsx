@@ -5,7 +5,7 @@ import NavBar from "@/components/NavBar/NavBar";
 
 export default function HomePage() {
     return (
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center py-7">
                 <Contents/>
             </div>
     );
