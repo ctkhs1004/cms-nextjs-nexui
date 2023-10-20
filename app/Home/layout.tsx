@@ -12,7 +12,7 @@ export default function HomeLayout({children}: { children: React.ReactNode }) {
                 <aside className="position-fixed h-100"><SideNavBar/></aside>
             </div>
             <main className="pl-60 d-flex flex-column min-vh-100">
-                <header className="header sticky-top mb-4 py-2 px-sm-2 border-bottom">
+                <header className="header mb-4 px-sm-2 sticky top-0 z-50 border-bottom">
                     <NavBar/>
                 </header>
                 <section className="body flex-grow-1 px-sm-2 mb-4">{children}</section>

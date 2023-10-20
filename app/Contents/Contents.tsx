@@ -4,7 +4,7 @@ import url from "../api/url";
 import {Contents} from "@/types"
 import {useEffect, useState} from "react";
 import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@nextui-org/react";
-
+import {Loading} from "@/components/Loading/index"
 async function getContentsData(): Promise<Contents[]> {
     const data = await getApi(url.getContents);
     const contenstData: Contents[] = data.contentsData.map((item: any) => ({
@@ -29,7 +29,7 @@ const Contents = () => {
 
 
     if (!apiContents || apiContents.length === 0) {
-        return <div>Loading...</div>;
+        return <Loading/>;
     }
     return (
         <div className="justify-center">
