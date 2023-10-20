@@ -7,14 +7,15 @@ import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@nextui-or
 import {Loading} from "@/components/Loading/index"
 async function getContentsData(): Promise<Contents[]> {
     const data = await getApi(url.getContents);
-    const contenstData: Contents[] = data.contentsData.map((item: any) => ({
+    const contentsData: Contents[] = data.contents.map((item: any) => ({
         name: item.name,
         message: item.message,
         post_dt: item.post_dt,
         goodMark: item.goodMark,
+        img: item.img,
     }))
-    console.log(contenstData)
-    return contenstData;
+    console.log(contentsData)
+    return contentsData;
 }
 
 const Contents = () => {
@@ -38,25 +39,25 @@ const Contents = () => {
                     <Card className="max-w-[640px]">
                         <CardHeader className="justify-between">
                             <div className="flex gap-5">
-                                <Avatar isBordered radius="full" size="md" src="/avatars/avatar-1.png"/>
+                                <Avatar isBordered radius="full" size="md" src={item.img}/>
                                 <div className="flex flex-col gap-1 items-start justify-center">
                                     <h4 className="text-small font-semibold leading-none text-default-600">{item.name}</h4>
                                     <h5 className="text-small tracking-tight text-default-400">@{item.name}</h5>
                                 </div>
                             </div>
                         </CardHeader>
-                        <CardBody className="px-3 py-0 text-small text-default-400">
+                        <CardBody className="px-5 py-5 text-small text-default-600">
                             <p>
                                 {item.message}
                             </p>
                         </CardBody>
                         <CardFooter className="gap-3">
                             <div className="flex gap-1">
+                                <p className=" text-default-400 text-small">❤️</p>
                                 <p className="font-semibold text-default-400 text-small">{item.goodMark}</p>
-                                <p className=" text-default-400 text-small">Good</p>
                             </div>
-                            <div className="flex gap-1">
-                                <p className="text-default-400 text-small">post data</p>
+                            <div className="flex gap-1 pl-96">
+                                <p className="text-default-400 text-small">Posted date</p>
                                 <p className="font-semibold text-default-400 text-small">{item.post_dt}</p>
                             </div>
                         </CardFooter>
