@@ -1,13 +1,12 @@
 import EmptyState from "@/components/Sidebar/EmptyState";
 import Contents from "../Contents/Contents";
+import NavBar from "@/components/NavBar/NavBar";
 
 
 export default function HomePage() {
     return (
-        <div>
-            <div className="h-screen flex justify-center items-center">
-                <Contents />
+            <div className="flex justify-center items-center">
+                <Contents/>
             </div>
-        </div>
     );
 }
