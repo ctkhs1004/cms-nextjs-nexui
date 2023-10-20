@@ -6,7 +6,7 @@ export default function HomeLayout({ children }: { children: React.ReactNode }) 
     return (
         <div className="w-full p-0">
             <SideNavBar/>
-            <div className="h-full">
+            <div className="justify-center">
                 {children}
             </div>
         </div>

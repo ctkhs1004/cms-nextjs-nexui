@@ -6,7 +6,7 @@ interface keyMap {
 const url: keyMap = {
     getUserInfo: '/api/getUserInfo',
     getUserAuth: '/api/getUserAuth',
-    getUserKey: '/api/getUserKey',
+    getContents: '/api/getContents',
     getCurrentUserInfo: '/api/getUserAuth/:email'
 };
 

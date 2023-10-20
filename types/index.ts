@@ -1,31 +1,47 @@
 import {SVGProps} from "react";
 
 export type IconSvgProps = SVGProps<SVGSVGElement> & {
-  size?: number;
+    size?: number;
 };
 
 
 export type SuccessResponse<T> = {
-  status: "success";
-  message?: string;
-  data?: T;
+    status: "success";
+    message?: string;
+    data?: T;
 };
 
 export type ErrorResponse = {
-  status: "error";
-  message: string;
+    status: "error";
+    message: string;
 };
 
 export interface RequestParams {
-  [key: string]: any;
+    [key: string]: any;
 }
 
 export interface UserData {
-  user: {
-    id?: string | null | undefined;
-    name: string;
-    age: number;
-    email: string;
-    password: string;
-  };
+    user: {
+        id?: string | null | undefined;
+        name: string;
+        age: number;
+        email: string;
+        password: string;
+    };
+}
+
+export interface Contents {
+    name: string,
+    message: string,
+    post_dt: string,
+    goodMark: string
+    // contentsData: [
+    //     {
+    //         name: string,
+    //         message: string,
+    //         post_dt: string,
+    //         goodMark: string
+    //     }
+    //
+    // ]
 }

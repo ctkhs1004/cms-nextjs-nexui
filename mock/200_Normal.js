@@ -25,8 +25,9 @@ app.get('/api/getUserAuth/:email', (req, res) => {
     res.status(200).json(mockData);
 })
 
-app.get('/api/getUserKey', (req, res) => {
-    const mockData = require('./res/key.json');
+//コンテンツデータ取得用
+app.get('/api/getContents', (req, res) => {
+    const mockData = require('./res/contentsData.json');
     res.status(200).json(mockData);
 })
 
