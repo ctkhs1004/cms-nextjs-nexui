@@ -40,7 +40,7 @@ const SideNavBar = () => {
                     <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
                         <MdOutlineAnalytics className="text-2xl text-gray-600 group-hover:text-white " />
                         <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
-                            <a href="/Table">Analytics</a>
+                            <a href="/Report">Report</a>
                         </h3>
                     </div>
                     <div className="flex  mb-2 justify-start items-center gap-4 pl-5 hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
@@ -74,7 +74,7 @@ const SideNavBar = () => {
                 {/* logout */}
                 <div className=" my-4">
                     <div className="flex mb-2 justify-start items-center gap-4 pl-5 border border-gray-200  hover:bg-gray-900 p-2 rounded-md group cursor-pointer hover:shadow-lg m-auto">
-                        <HeaderSignOut />
+                        <HeaderSignOut  />
                         <h3 className="text-base text-gray-400 group-hover:text-white font-semibold ">
                         </h3>
                     </div>

@@ -81,7 +81,7 @@ const options: Props["options"] = {
 export const Steam = () => {
     return (
         <>
-            <div className="w-full z-20">
+            <div className="flex justify-center items-center w-full h-full">
                 <div id="chart">
                     <Chart options={options} series={state} type="area" height={425} width={800} />
                 </div>
