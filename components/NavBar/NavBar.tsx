@@ -4,7 +4,6 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownIte
 import {AcmeLogo} from "@/components/NavBar/AcmeLogo";
 import {SearchIcon} from "@/components/NavBar/SearchIcon";
 import HeaderSignOut from "@/components/Header/HeaderSignOut";
-import {ThemeSwitch} from "@/components/theme-switch";
 
 const NavBar =() => {
   return (
@@ -46,7 +45,6 @@ const NavBar =() => {
           startContent={<SearchIcon size={18} />}
           type="search"
         />
-        <ThemeSwitch/>
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar
