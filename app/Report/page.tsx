@@ -6,28 +6,43 @@ import React, {
 import dynamic from "next/dynamic";
 import UserTable from "@/components/Table/table";
 import {Loading} from "@/components/Loading";
+import {getApi} from "@/utils/httpRequest";
+import url from "@/app/api/url";
+import {UserData} from "@/types";
 
 const Chart = dynamic(() => import('@/components/Charts').then((mod) => mod.Steam), {
 	ssr: false,
 });
 
 export default function ReportPage() {
-	const [isLoaded, setIsLoaded] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
+	const [data, setData] = useState<any>(null);
+	const [chartData, setChartData] = useState<any>(null);
+	const [error, setError] = useState<Error | null>(null);
 
 	useEffect(() => {
-		setIsLoaded(true);
+		const fetchData = async () => {
+			try {
+				const userResult: any = await getApi(url.getUserList);
+				setData(userResult);
+				const chartResult: any = await getApi(url.getChartsData);
+				setChartData(chartResult);
+				console.log('chartResult', chartResult.data);
+			} catch (error) {
+				console.error('An error occurred while fetching the data.', error);
+				if (error instanceof Error) {
+					setError(error);
+				} else {
+					setError(new Error(String(error)));
+				}
+			} finally {
+				setIsLoading(false);
+			}
+		};
+		fetchData();
 	}, []);
 
-	const sampleUsers = [
-		{ id: 1, name: 'test1', role: 'Developer', status: 'Active' },
-		{ id: 2, name: 'test2', role: 'Manager', status: 'Vacation' },
-		{ id: 3, name: 'test3', role: 'Manager', status: 'Vacation' },
-		{ id: 4, name: 'test4', role: 'Manager', status: 'Vacation' },
-		{ id: 5, name: 'test5', role: 'Manager', status: 'Vacation' },
-		// ... more users
-	];
-
-	if (!isLoaded) {
+	if (isLoading) {
 		return (
 			<div className="flex justify-center items-center h-screen">
 				<Loading />
@@ -35,13 +50,21 @@ export default function ReportPage() {
 		);
 	}
 
+	if (error) {
+		return (
+			<div className="flex justify-center items-center h-screen">
+				<p>Error: {error.message}</p>
+			</div>
+		);
+	}
+
 	return (
 		<div>
 			<div>
-				<Chart />
+				<Chart chartList={chartData?.data.chartList}/>
 			</div>
 			<div className="max-w-xl mx-auto">
-				<UserTable users={sampleUsers} />
+				<UserTable list={data?.data.userList || []} />
 			</div>
 		</div>
 	);

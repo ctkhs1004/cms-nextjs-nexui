@@ -1,0 +1,39 @@
+{
+  "status": 0,
+  "error": "",
+  "message": "",
+  "data": {
+    "userList": [
+      {
+        "id": 1,
+        "name": "test1",
+        "role": "Developer",
+        "status": "Active"
+      },
+      {
+        "id": 2,
+        "name": "test2",
+        "role": "Developer",
+        "status": "Active"
+      },
+      {
+        "id": 3,
+        "name": "test3",
+        "role": "Developer",
+        "status": "Active"
+      },
+      {
+        "id": 4,
+        "name": "test4",
+        "role": "Developer",
+        "status": "Active"
+      },
+      {
+        "id": 5,
+        "name": "test5",
+        "role": "Developer",
+        "status": "Active"
+      }
+    ]
+  }
+}
