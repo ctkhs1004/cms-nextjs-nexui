@@ -3,14 +3,23 @@ import React from "react";
 import { DeleteIcon } from "@/components/DeleteIcon";
 import { EditIcon } from "@/components/EditIcon";
 import { EyeIcon } from "@/components/EyeIcon";
-import { users } from "./data";
 
-interface Props {
-    user: (typeof users)[number];
-    columnKey: string | React.Key;
+interface UserProps {
+    id: number;
+    name: string;
+    role: string;
+    team: string;
+    status: string;
+    age: string;
+    avatar: string;
+    email: string;
 }
 
-export const RenderCell = ({ user, columnKey }: Props) => {
+interface RenderCellProps {
+    user: UserProps;
+    columnKey: string | React.Key;
+}
+export const RenderCell = ({ user, columnKey }: RenderCellProps) => {
     // @ts-ignore
     const cellValue = user[columnKey];
     switch (columnKey) {

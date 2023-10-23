@@ -74,6 +74,9 @@ export default function ReportPage() {
 			<div>
 				<Chart tagsData={chartData}/>
 			</div>
+			<div>
+				<h2 className="flex justify-center items-center">Latest Users</h2>
+			</div>
 			<div className="flex flex-col justify-center w-full py-5 px-4 lg:px-0  max-w-[60rem] mx-auto gap-3">
 				<TableWrapper users={data} columns={columnsData} />
 			</div>
