@@ -9,20 +9,20 @@ interface User {
 }
 
 interface UserTableProps {
-    users?: User[];
+    list?: User[];
     ariaLabel?: string;
     emptyMessage?: string;
 }
 
-const UserTable: React.FC<UserTableProps> = ({ users = [], ariaLabel = "User table", emptyMessage = "No rows to display." }) => {
+const UserTable: React.FC<UserTableProps> = ({ list = [], ariaLabel = "User table", emptyMessage = "No rows to display." }) => {
     const [page, setPage] = React.useState(1);
-    const rowsPerPage = 3;
-    const pages = Math.ceil(users.length / rowsPerPage);
+    const rowsPerPage = 5;
+    const pages = Math.ceil(list.length / rowsPerPage);
     const items = React.useMemo(() => {
         const start = (page - 1) * rowsPerPage;
         const end = start + rowsPerPage;
-        return users.slice(start, end);
-    }, [page, users]);
+        return list.slice(start, end);
+    }, [page, list]);
 
     return (
         <Table aria-label="Example table with client side pagination"

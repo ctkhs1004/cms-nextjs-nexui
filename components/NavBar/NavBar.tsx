@@ -4,6 +4,7 @@ import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Input, DropdownIte
 import {AcmeLogo} from "@/components/NavBar/AcmeLogo";
 import {SearchIcon} from "@/components/NavBar/SearchIcon";
 import HeaderSignOut from "@/components/Header/HeaderSignOut";
+import {ThemeSwitch} from "@/components/theme-switch";
 import { UserData } from "@/types";
 
 // interface CurrentUserProps {
@@ -49,6 +50,7 @@ const NavBar: React.FC<any> =({currentUser}) => {
           startContent={<SearchIcon size={18} />}
           type="search"
         />
+        <ThemeSwitch/>
         <Dropdown placement="bottom-end">
           <DropdownTrigger>
             <Avatar

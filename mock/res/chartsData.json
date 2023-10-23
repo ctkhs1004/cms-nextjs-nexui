@@ -1,0 +1,13 @@
+{
+  "status": 0,
+  "error": "",
+  "message": "",
+  "data": {
+    "tags": {
+      "apple": 400,
+      "banana": 200,
+      "orange": 9,
+      "grape": 50
+    }
+  }
+}

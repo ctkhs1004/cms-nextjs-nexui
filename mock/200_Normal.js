@@ -31,7 +31,21 @@ app.get('/api/getContents', (req, res) => {
     res.status(200).json(mockData);
 })
 
+// userList
+app.get('/api/getUserList', (req, res) => {
+    const mockData = require('./res/userInfo.json');
+    res.status(200).json(mockData);
+});
+
+// userList
+app.get('/api/getChartsData', (req, res) => {
+    const mockData = require('./res/chartsData.json');
+    res.status(200).json(mockData);
+});
+
 app.listen(port, () => {
     console.log(`Mock server is running on port ${port}`);
 });
+
+
 
