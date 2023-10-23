@@ -4,10 +4,11 @@ import React, {
 	useState
 } from "react";
 import dynamic from "next/dynamic";
-import UserTable from "@/components/Table/table";
 import {Loading} from "@/components/Loading";
 import {getApi} from "@/utils/httpRequest";
 import url from "@/app/api/url";
+import {TableWrapper} from "@/components/Table";
+import Link from "next/link";
 
 const Chart = dynamic(() => import('@/components/Charts').then((mod) => mod.Steam), {
 	ssr: false,
@@ -18,6 +19,15 @@ export default function ReportPage() {
 	const [data, setData] = useState<any>(null);
 	const [chartData, setChartData] = useState<any>(null);
 	const [error, setError] = useState<Error | null>(null);
+	const columnsData = [
+		{ uid: 'name', name: 'Name' },
+		{ uid: 'role', name: 'Role' },
+		{ uid: 'team', name: 'Team' },
+		{ uid: 'status', name: 'Status' },
+		{ uid: 'age', name: 'Age' },
+		{ uid: 'email', name: 'Email' },
+		{ uid: 'actions', name: 'Actions' },
+	];
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -57,13 +67,15 @@ export default function ReportPage() {
 		);
 	}
 
+
 	return (
 		<div>
+			<h1 className="flex justify-center items-center">Report</h1>
 			<div>
 				<Chart tagsData={chartData}/>
 			</div>
-			<div className="max-w-xl mx-auto">
-				<UserTable list={data} />
+			<div className="flex flex-col justify-center w-full py-5 px-4 lg:px-0  max-w-[60rem] mx-auto gap-3">
+				<TableWrapper users={data} columns={columnsData} />
 			</div>
 		</div>
 	);
