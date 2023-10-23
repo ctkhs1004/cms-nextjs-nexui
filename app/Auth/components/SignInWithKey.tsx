@@ -12,6 +12,7 @@ const SignInWithKey = () => {
     const handleLoginClick = (key: string) => {
         if (!key.startsWith('nsec')) {
             alert('The private key must start with nsec');
+            return;
         }
         signIn('credentials', {
             key,
