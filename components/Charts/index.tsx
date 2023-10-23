@@ -14,18 +14,6 @@ export const Steam: React.FC<TagChartProps> = ({ tagsData }) => {
     const categories: string[] = Object.keys(tagsData);
 
     const options: Props["options"] = {
-        colors: ['red', 'blue'], // これは各シリーズの色を指定します。複数のシリーズがある場合、配列の形で色を指定します。
-        plotOptions: {
-            bar: {
-                colors: {
-                    ranges: [
-                        { from: 0, to: 50, color: 'green' },
-                        { from: 51, to: 100, color: 'yellow' },
-                        { from: 101, to: 200, color: 'red' }
-                    ]
-                }
-            }
-        },
         chart: {
             type: "bar",
             animations: {
@@ -38,6 +26,18 @@ export const Steam: React.FC<TagChartProps> = ({ tagsData }) => {
             toolbar: {
                 show: false,
             },
+        },
+        plotOptions: {
+            bar: {
+                distributed: true,
+                colors: {
+                    ranges: [
+                        { from: 0, to: 10, color: '#FF5733' },
+                        { from: 11, to: 200, color: '#33FF57' },
+                        { from: 200, to: 1000, color: '#5733FF' },
+                    ]
+                }
+            }
         },
         xaxis: {
             categories: categories,
