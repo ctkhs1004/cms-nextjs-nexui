@@ -2,6 +2,7 @@
   "user" : {
     "email": "xf@xf.com",
     "password": "p@sword",
-    "key": "nsec1234"
+    "key": "nsec1234",
+    "name": "demo_user"
   }
 }
