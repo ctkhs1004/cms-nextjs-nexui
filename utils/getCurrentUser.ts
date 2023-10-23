@@ -1,7 +1,7 @@
 import getSession from "@/utils/getSession"
 import url from "@/app/api/url";
 import {getUserApi} from "./httpRequest";
-import { RequestParams } from "@/types";
+import { RequestParams, UserData } from "@/types";
 const getCurrentUser = async () => {
     try {
         const session = await getSession();
@@ -17,6 +17,8 @@ const getCurrentUser = async () => {
         if (!currentUser) {
             return null;
         }
+        console.log(session)
+        console.log(currentUser)
         return currentUser;
     } catch (error: any) {
         //エラーコードは共通化予定

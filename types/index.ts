@@ -27,6 +27,7 @@ export interface UserData {
         age: number;
         email: string;
         password: string;
+        key: string;
     };
 }
 

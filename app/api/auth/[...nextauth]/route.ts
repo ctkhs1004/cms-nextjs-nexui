@@ -59,12 +59,14 @@ const authOptions: NextAuthOptions = {
                 if (!isCorrectKey) {
                     throw new Error('Invalid credentials');
                 }
+                console.log(userInfo)
                 return userInfo;
             }
         }),
     ],
-
-    session: {strategy: "jwt"}
+    debug: process.env.NODE_ENV === 'development',
+    session: {strategy: "jwt"},
+    secret: process.env.NEXTAUTH_SECRET
 };
 
 const handler = NextAuth(authOptions);
