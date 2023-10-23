@@ -8,7 +8,6 @@ import UserTable from "@/components/Table/table";
 import {Loading} from "@/components/Loading";
 import {getApi} from "@/utils/httpRequest";
 import url from "@/app/api/url";
-import {UserData} from "@/types";
 
 const Chart = dynamic(() => import('@/components/Charts').then((mod) => mod.Steam), {
 	ssr: false,
@@ -24,10 +23,10 @@ export default function ReportPage() {
 		const fetchData = async () => {
 			try {
 				const userResult: any = await getApi(url.getUserList);
-				setData(userResult);
-				const chartResult: any = await getApi(url.getChartsData);
-				setChartData(chartResult);
-				console.log('chartResult', chartResult.data);
+				setData(userResult.data.userList);
+				const tagsResult: any = await getApi(url.getChartsData);
+				setChartData(tagsResult.data.tags);
+				console.log('chartResult', tagsResult.data);
 			} catch (error) {
 				console.error('An error occurred while fetching the data.', error);
 				if (error instanceof Error) {
@@ -61,10 +60,10 @@ export default function ReportPage() {
 	return (
 		<div>
 			<div>
-				<Chart chartList={chartData?.data.chartList}/>
+				<Chart tagsData={chartData}/>
 			</div>
 			<div className="max-w-xl mx-auto">
-				<UserTable list={data?.data.userList || []} />
+				<UserTable list={data} />
 			</div>
 		</div>
 	);
