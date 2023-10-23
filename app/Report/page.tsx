@@ -15,13 +15,15 @@ export default function ReportPage() {
 	const [isLoaded, setIsLoaded] = useState(false);
 
 	useEffect(() => {
-		// 将内容设置为已加载，当组件被渲染后
 		setIsLoaded(true);
 	}, []);
 
 	const sampleUsers = [
-		{ id: 1, name: 'Alice', role: 'Developer', status: 'Active' },
-		{ id: 2, name: 'Bob', role: 'Manager', status: 'Vacation' },
+		{ id: 1, name: 'test1', role: 'Developer', status: 'Active' },
+		{ id: 2, name: 'test2', role: 'Manager', status: 'Vacation' },
+		{ id: 3, name: 'test3', role: 'Manager', status: 'Vacation' },
+		{ id: 4, name: 'test4', role: 'Manager', status: 'Vacation' },
+		{ id: 5, name: 'test5', role: 'Manager', status: 'Vacation' },
 		// ... more users
 	];
 
@@ -38,7 +40,7 @@ export default function ReportPage() {
 			<div>
 				<Chart />
 			</div>
-			<div>
+			<div className="max-w-xl mx-auto">
 				<UserTable users={sampleUsers} />
 			</div>
 		</div>
