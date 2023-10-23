@@ -10,7 +10,7 @@ export const siteConfig = {
         },
         {
             label: "Table",
-            href: "/Table",
+            href: "/Report",
         },
         {
             label: "Interface",
