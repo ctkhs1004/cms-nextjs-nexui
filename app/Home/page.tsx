@@ -8,6 +8,8 @@ import {useEffect} from "react";
 
 export default function HomePage() {
     const session = useSession();
+    console.log(session)
+    console.log(session?.data?.user)
     const router = useRouter();
     useEffect(() => {
         if (session?.status !== 'authenticated') {
@@ -16,9 +18,14 @@ export default function HomePage() {
     }, [session?.status, router]);
     return (
         <SessionProvider>
-            <div className="flex justify-center items-center py-7">
-                <Contents/>
-            </div>
+            <header className="header mb-4 px-sm-2 sticky top-0 z-50 border-bottom">
+                <NavBar/>
+            </header>
+            <section className="body flex-grow-1 px-sm-2 mb-4">
+                <div className="flex justify-center items-center py-7">
+                    <Contents/>
+                </div>
+            </section>
         </ SessionProvider>
     );
 }
