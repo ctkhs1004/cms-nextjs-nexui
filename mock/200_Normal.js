@@ -25,6 +25,16 @@ app.get('/api/getUserAuth/:email', (req, res) => {
     res.status(200).json(mockData);
 })
 
+app.post('/api/postUserKey/', (req, res) => {
+    const response = require('./res/key.json');
+    console.log("req -> ",req.body.key)
+    console.log("res -> ",response.data.key)
+    if(req.body.key !== response.data.key){
+        throw new Error("Error Request parameter")
+    }
+    res.status(200).json(response);
+});
+
 //コンテンツデータ取得用
 app.get('/api/getContents', (req, res) => {
     const mockData = require('./res/contentsData.json');

@@ -1,0 +1,9 @@
+{
+  "status": 200,
+  "error": "null",
+  "message": "",
+  "data": {
+    "name": "demo_user",
+    "key": "nsec1234"
+  }
+}

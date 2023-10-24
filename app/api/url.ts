@@ -10,7 +10,8 @@ const url: keyMap = {
         getContents: '/api/getContents',
         getCurrentUserInfo: '/api/getUserAuth/:email',
         getUserList: '/api/getUserList',
-        getChartsData: '/api/getChartsData'
+        getChartsData: '/api/getChartsData',
+        postUserKey: '/api/postUserKey/'
     }
 ;
 
