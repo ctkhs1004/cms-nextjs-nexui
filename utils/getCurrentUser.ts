@@ -2,9 +2,12 @@ import getSession from "@/utils/getSession"
 import url from "@/app/api/url";
 import {getUserApi} from "./httpRequest";
 import { RequestParams, UserData } from "@/types";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 const getCurrentUser = async () => {
     try {
-        const session = await getSession();
+        const session = await getServerSession(authOptions);
+        console.log("Server session -> ",session)
         if (!session || !session.user || !session.user.email) {
             return null;
         }
@@ -17,8 +20,8 @@ const getCurrentUser = async () => {
         if (!currentUser) {
             return null;
         }
-        console.log(session)
-        console.log(currentUser)
+        
+        console.log("Server currentUser -> ",currentUser)
         return currentUser;
     } catch (error: any) {
         //エラーコードは共通化予定

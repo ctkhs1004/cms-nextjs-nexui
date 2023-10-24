@@ -3,14 +3,22 @@ import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from "next-auth/providers/credentials"
 import {getApi} from "@/utils/httpRequest";
 import url from "@/app/api/url";
-import bcrypt from "bcrypt";
-import {SessionOptions} from "http2";
 
 type ClientType = {
     clientId: string;
     clientSecret: string;
 };
 
+//セッションに渡す用の変数を定義
+type User = {
+    name?: string | null
+    email?: string | null
+}
+
+export let user: User = {
+    name: "",
+    email: "",
+}
 const authOptions: NextAuthOptions = {
     providers: [
         GoogleProvider({
@@ -27,13 +35,7 @@ const authOptions: NextAuthOptions = {
             },
             async authorize(credentials) {
                 console.log(credentials)
-                // //入力チェック
-                // if (!credentials?.email || !credentials?.password && !credentials?.key) {
-                //     console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<< 1")
-                //     throw new Error('Invalid credentials (Input Error)');
-                // }
-
-                //Keyでの認証の場合、非対称暗号での認識のため、NextAuthでの認証は不要？
+                
                 //パスワード認証の場合
                 if (credentials?.password && !credentials?.key) {
                     const userInfo: any = await getApi(url.getUserAuth)
@@ -50,6 +52,10 @@ const authOptions: NextAuthOptions = {
                     if (!isCorrectPassword) {
                         throw new Error('Invalid credentials(Invalid password)');
                     }
+                    user = {
+                        name: userInfo.user.name,
+                        email: userInfo.user.email,
+                    }
                     return userInfo;
                 }
 
@@ -59,11 +65,33 @@ const authOptions: NextAuthOptions = {
                 if (!isCorrectKey) {
                     throw new Error('Invalid credentials');
                 }
-                console.log(userInfo)
+              
+                user = {
+                    name: userInfo.user.name,
+                }
+               
                 return userInfo;
             }
         }),
     ],
+    callbacks: {
+        async jwt({token, user: User}) {
+            // Persist the OAuth access_token and or the user id to the token right after signin
+            if (user) {
+                token.name = user.name ? user.name : ""
+                token.email = user.email ? user.email : ""
+            } 
+            return token
+        },
+        async session({session, token}: {
+            session: any;
+            token: any
+        }) {
+            session.user.name = token.name
+            session.user.email = token.email
+            return session
+        },
+    },
     debug: process.env.NODE_ENV === 'development',
     session: {strategy: "jwt"},
     secret: process.env.NEXTAUTH_SECRET
