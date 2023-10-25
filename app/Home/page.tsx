@@ -9,7 +9,6 @@ import getCurrentUser from "@/utils/getCurrentUser";
 
 export default function HomePage() {
     const session = useSession();
-    console.log(session)
    
     const router = useRouter();
     useEffect(() => {

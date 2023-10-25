@@ -1,4 +1,4 @@
-import NextAuth, {NextAuthOptions, getServerSession} from 'next-auth';
+import NextAuth, {DefaultUser, NextAuthOptions, getServerSession} from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from "next-auth/providers/credentials"
 import {getApi, postApi} from "@/utils/httpRequest";
@@ -8,14 +8,33 @@ type ClientType = {
     clientId: string;
     clientSecret: string;
 };
+declare module 'next-auth' {
+    /**
+     * Leveraged by session callback's user object (AdapterUser extends User)
+     */
+    export interface User extends DefaultUser {
+        /** Define any user-specific variables here to make them available to other code inferences */
+        key: string;
+    }
+    
+    export interface Session {
+        user: {
+            key: string
+        }
+    }
 
+    interface JWT {
+        /** OpenID ID Token */
+        key: string
+    }
+}
 const authOptions: NextAuthOptions = {
     providers: [
         GoogleProvider({
             clientId: process.env.GOOGLE_CLIENT_ID,
             clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         } as ClientType),
-        
+
         CredentialsProvider({
             name: 'credentials',
             credentials: {
@@ -41,17 +60,17 @@ const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
     callbacks: {
         async jwt({token, user, account}) {
-            console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<< start")
-            console.log("jwt");
-            console.log(token);
-            console.log("user -> ", user)
-            console.log("account -> ", account)
+            console.log("user -> ", user);
             if (account && user) {
                 token.name = user.name;
+                token.key = user.key;
             }
-            console.log("afyer token -> ", token)
-            console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<< end")
+            console.log("token -> ", token);
             return token;
+        },
+        session({session, token, user}) {
+            console.log("session -> ",session)
+            return session // The return type will match the one returned in `useSession()`
         },
 
     },
