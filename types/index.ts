@@ -22,12 +22,13 @@ export interface RequestParams {
 
 export interface UserData {
     user: {
-        id?: string | null | undefined;
-        name: string;
+        id?: string | null | undefined | unknown;
+        name: string | null | undefined | unknown;
         age: number;
         email: string;
         password: string;
-        key: string;
+        key: string | null | undefined | unknown;
+        bio: string | null | undefined | unknown;
     };
 }
 
