@@ -26,4 +26,3 @@ export default function ReportLayout({
         </div>
     );
 }
-
