@@ -9,7 +9,7 @@ import {Card, CardBody, CardFooter, CardHeader} from "react-bootstrap";
 import url from "@/app/api/url";
 import { Loading } from "../Loading";
 
-async function getUserProfile(id: string | unknown): Promise<UserData> {
+async function getUserProfile(id: string | unknown): Promise<any> {
     const profile = await getApi(url.getUserBio, {id});
     console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<< profile -> ",profile)
     const result: any = {
@@ -19,29 +19,17 @@ async function getUserProfile(id: string | unknown): Promise<UserData> {
         bio: profile.data.bio
     }
     console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<< result -> ",result)
-    const userInfo: UserData = {
-        user: {
-            id: result.id,
-            name: result.name,
-            age: 0,
-            email: '',
-            password: '',
-            key: result.key,
-            bio: result.bio
-        }
-    }
-    console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<< userInfo -> ",userInfo)
-    return userInfo;
+    return result;
 }
 
 export default function ProfileContents() {
-    const [bioApi, setBioApi] = useState<UserData | unknown | undefined>()
+    const [bioApi, setBioApi] = useState<any>()
     const session = useSession();
     useEffect(() => {
         const axiosData = async () => {
-            const userInfo = await getUserProfile(session?.data?.user?.id);
-            setBioApi(userInfo.user)
-            
+            const res = await getUserProfile(session?.data?.user?.id);
+            setBioApi(res)
+            console.log("res -> ", res)
             console.log("bioApi -> ")
             console.log(bioApi)
         }
@@ -64,7 +52,7 @@ export default function ProfileContents() {
             </CardHeader>
             <CardBody className="px-3 py-0 text-small text-default-400">
                 <p>
-                    {/*{bioApi ? bioApi : ""}*/}
+                    { bioApi.bio }
                 </p>
                 <span className="pt-2">
           #FrontendWithZoey

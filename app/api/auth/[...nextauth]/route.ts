@@ -11,22 +11,22 @@ type ClientType = {
 declare module 'next-auth' {
     export interface Session {
         user:  {
-            name: string | null | undefined
-            key: string | null | undefined | unknown
-            id:  string | null | undefined | unknown
+            name: any
+            key: any
+            id:  any
         }
     }
 
     export interface User extends DefaultUser {
         /** Define any user-specific variables here to make them available to other code inferences */
-        key: string;
-        id: string
+        key: any;
+        id: any
     }
 
     interface JWT {
         /** OpenID ID Token */
-        key: string | null | undefined
-        id: string | null | undefined
+        key: any
+        id: any
     }
 }
 const authOptions: NextAuthOptions = {
