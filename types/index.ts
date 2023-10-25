@@ -37,13 +37,4 @@ export interface Contents {
     post_dt: string,
     goodMark: string,
     img: string
-    // contentsData: [
-    //     {
-    //         name: string,
-    //         message: string,
-    //         post_dt: string,
-    //         goodMark: string
-    //     }
-    //
-    // ]
 }

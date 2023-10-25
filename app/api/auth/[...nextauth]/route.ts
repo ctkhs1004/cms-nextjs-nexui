@@ -1,7 +1,7 @@
 import NextAuth, {DefaultSession, DefaultUser, NextAuthOptions, getServerSession} from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from "next-auth/providers/credentials"
-import {getApi, postApi} from "@/utils/httpRequest";
+import {postApi} from "@/utils/httpRequest";
 import url from "@/app/api/url";
 
 type ClientType = {
@@ -13,17 +13,20 @@ declare module 'next-auth' {
         user:  {
             name: string | null | undefined
             key: string | null | undefined | unknown
+            id:  string | null | undefined | unknown
         }
     }
 
     export interface User extends DefaultUser {
         /** Define any user-specific variables here to make them available to other code inferences */
         key: string;
+        id: string
     }
 
     interface JWT {
         /** OpenID ID Token */
         key: string | null | undefined
+        id: string | null | undefined
     }
 }
 const authOptions: NextAuthOptions = {
@@ -62,6 +65,7 @@ const authOptions: NextAuthOptions = {
             if (account && user) {
                 token.name = user.name;
                 token.key = user.key;
+                token.id = user.id;
             }
             console.log("token -> ", token);
             return token;
@@ -69,6 +73,7 @@ const authOptions: NextAuthOptions = {
         session({session, token, user}) {
             session.user.name = token.name;
             session.user.key = token.key;
+            session.user.id = token.id
             console.log("session -> ", session)
             return session 
         },

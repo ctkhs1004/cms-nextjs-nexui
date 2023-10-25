@@ -20,7 +20,6 @@ app.get('/api/getUserAuth', (req, res) => {
 
 //ログインユーザー取得用
 app.get('/api/getUserAuth/:email', (req, res) => {
-    const userId = req.params.id;
     const mockData = require('./res/db.json');
     res.status(200).json(mockData);
 })
@@ -38,6 +37,16 @@ app.post('/api/postUserKey/', (req, res) => {
 //コンテンツデータ取得用
 app.get('/api/getContents', (req, res) => {
     const mockData = require('./res/contentsData.json');
+    res.status(200).json(mockData);
+})
+
+app.get('/api/getUserBio/:id',(req,res) => {
+    const mockData = require('./res/key.json')
+    res.status(200).json(mockData);
+})
+app.get('/api/getUserBio',(req,res) => {
+    const key = req.params.id
+    const mockData = require('./res/key.json')
     res.status(200).json(mockData);
 })
 
