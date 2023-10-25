@@ -7,7 +7,7 @@ import {useSession} from "next-auth/react";
 import {useEffect, useState} from "react";
 import {Card, CardBody, CardFooter, CardHeader} from "react-bootstrap";
 import url from "@/app/api/url";
-import { Loading } from "../Loading";
+import {Loading} from "../Loading";
 
 async function getUserProfile(id: string | unknown): Promise<any> {
     const profile = await getApi(url.getUserBio, {id});
@@ -33,38 +33,39 @@ export default function ProfileContents() {
         }
         axiosData();
     }, []);
-    
-    if(!bioApi){
-        return  <Loading/>
+
+    if (!bioApi) {
+        return <Loading/>
     }
-    
+
     return (
-        <Card className="w-10/12 h-96">
-            <CardHeader className="justify-between pl-2">
-                <div className="flex gap-5">
-                    <Avatar isBordered radius="full" size="md" src="https://i.pravatar.cc/150?u=a042581f4e29026704d"/>
-                    <div className="flex flex-col gap-1 items-start justify-center">
-                        <h4 className="text-small font-semibold leading-none text-default-600">{session?.data?.user?.name}</h4>
-                        <h5 className="text-small tracking-tight text-default-400">@{session?.data?.user?.name}</h5>
+        <div className="w-10/12 h-96">
+            <Card>
+                <CardHeader className="justify-between pl-2">
+                    <div className="flex gap-5">
+                        <Avatar isBordered radius="full" size="md"
+                                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"/>
+                        <div className="flex flex-col gap-1 items-start justify-center">
+                            <h4 className="text-small font-semibold leading-none text-default-600">{session?.data?.user?.name}</h4>
+                            <h5 className="text-small tracking-tight text-default-400">@{session?.data?.user?.name}</h5>
+                        </div>
                     </div>
-                </div>
-            </CardHeader>
-            <CardBody className="pl-2 px-5 py-5 text-small text-default-600">
-                <h4 className="text-small font-semibold leading-none text-default-600">Bio</h4>
-                <p className="pl-6 px-5 py-5">
-                    {bioApi.bio}
-                </p>
-            </CardBody>
-            <CardFooter className="gap-8 pl-6">
-                <div className="flex gap-1">
-                    <p className=" text-default-400 text-small">❤️</p>
-                    <p className="font-semibold text-default-400 text-small">aaaaaa</p>
-                </div>
-                <div className="flex gap-1 pl-96">
-                    <p className="text-default-400 text-small">Posted date</p>
-                    <p className="font-semibold text-default-400 text-small">aaaaaaaa</p>
-                </div>
-            </CardFooter>
-        </Card>
+                </CardHeader>
+                <CardBody className="pl-2 px-5 py-5 text-large text-default-600">
+                    <h4 className="text-medium font-semibold leading-none text-default-600">Bio</h4>
+                    <p className="pl-6 px-5 py-5">
+                        {bioApi.bio}
+                    </p>
+                </CardBody>
+                <CardFooter className="gap-8 pl-6">
+                    <div className="flex gap-1">
+                        <button>Edit</button>
+                    </div>
+                    <button>Delete</button>
+                    <div className="flex gap-1 pl-96">
+                    </div>
+                </CardFooter>
+            </Card>
+        </div>
     )
 }
