@@ -1,4 +1,4 @@
-import NextAuth, {DefaultUser, NextAuthOptions, getServerSession} from 'next-auth';
+import NextAuth, {DefaultSession, DefaultUser, NextAuthOptions, getServerSession} from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from "next-auth/providers/credentials"
 import {getApi, postApi} from "@/utils/httpRequest";
@@ -9,23 +9,21 @@ type ClientType = {
     clientSecret: string;
 };
 declare module 'next-auth' {
-    /**
-     * Leveraged by session callback's user object (AdapterUser extends User)
-     */
+    export interface Session {
+        user:  {
+            name: string | null | undefined
+            key: string | null | undefined | unknown
+        }
+    }
+
     export interface User extends DefaultUser {
         /** Define any user-specific variables here to make them available to other code inferences */
         key: string;
     }
-    
-    export interface Session {
-        user: {
-            key: string
-        }
-    }
 
     interface JWT {
         /** OpenID ID Token */
-        key: string
+        key: string | null | undefined
     }
 }
 const authOptions: NextAuthOptions = {
@@ -69,8 +67,10 @@ const authOptions: NextAuthOptions = {
             return token;
         },
         session({session, token, user}) {
-            console.log("session -> ",session)
-            return session // The return type will match the one returned in `useSession()`
+            session.user.name = token.name;
+            session.user.key = token.key;
+            console.log("session -> ", session)
+            return session 
         },
 
     },
