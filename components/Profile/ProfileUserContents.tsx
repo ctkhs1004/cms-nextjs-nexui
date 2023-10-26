@@ -10,8 +10,6 @@ import {useSession} from "next-auth/react";
 
 export async function getUserContents(id: string) {
     const data = await getUserApi(url.getUserContents, {id});
-    console.log(id)
-    console.log("<<<<<<<<<<<<<<<<<< data", data)
     const result: Contents[] = data.map((item: any) => ({
         id: item.id,
         name: item.name,
@@ -23,19 +21,18 @@ export async function getUserContents(id: string) {
     return result;
 }
 
-export default function ProfileUserContents() {
+export default function ProfileUserContents(sessionProp: any) {
     const [userContents, setUserContents] = useState<Contents[]>()
+    console.log(sessionProp.session)
     useEffect(() => {
         const axiosGet = async () => {
-            const res = await getUserContents("001");
+            const res = await getUserContents(sessionProp.session);
             setUserContents(res)
         }
         axiosGet();
         console.log(userContents)
     }, []);
-    if (!userContents) {
-        return <Loading/>;
-    }
+ 
     return (
         <div className="justify-center">
             {userContents?.map((item, index) => (

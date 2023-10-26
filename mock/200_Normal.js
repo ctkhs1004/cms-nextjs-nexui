@@ -40,13 +40,10 @@ app.get('/api/getContents', (req, res) => {
     res.status(200).json(mockData);
 })
 
-app.get('/api/getContents/:id', (req, res) => {
-    console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
-    console.log("req -> ", req.params.id)
+app.get('/api/getUserContents/', (req, res) => {
     const mockDataLists = require('./res/contentsData.json');
     let mockArray = mockDataLists.contents
-    const result = mockArray.filter(mockData => mockData.id === req.params.id);
-    console.log("result -> ", result)
+    const result = mockArray.filter(mockData => mockData.id === req.query.id);
     res.status(200).json(result);
 });
 

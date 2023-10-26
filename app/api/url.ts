@@ -8,7 +8,7 @@ const url: keyMap = {
     getUserInfo: '/api/getUserInfo',
     getUserAuth: '/api/getUserAuth',
     getContents: '/api/getContents',
-    getUserContents: '/api/getContents/',
+    getUserContents: '/api/getUserContents/',
     getCurrentUserInfo: '/api/getUserAuth/:email',
     getUserList: '/api/getUserList',
     getChartsData: '/api/getChartsData',

@@ -9,7 +9,6 @@ import { useSession } from "next-auth/react";
 
 const ProfilePage = () => {
     const session = useSession();
-    console.log(session?.data?.user?.id)
     return (
         <div className="flex justify-center items-center py-7">
             <section className="body flex-grow-1 px-sm-2 mb-4 ">
@@ -17,8 +16,8 @@ const ProfilePage = () => {
                     <Profile/>
                 </div>
                 <div className="justify-center items-center py-7">
-                    <h4>Posts</h4>
-                    <ProfileUserContents/>
+                    <h4 className="justify-center">Posts</h4>
+                    <ProfileUserContents session={session?.data?.user?.id}/>
                 </div>
             </section>
 
