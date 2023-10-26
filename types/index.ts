@@ -33,6 +33,7 @@ export interface UserData {
 }
 
 export interface Contents {
+    id: string,
     name: string,
     message: string,
     post_dt: string,

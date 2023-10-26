@@ -32,9 +32,11 @@ export const getApi = async (url: string, param?: RequestParams): Promise<any> =
     }
 };
 
-export const getUserApi = async (url: string, param?: RequestParams): Promise<any> => {
+export const getUserApi = async (url: string, params?: any): Promise<any> => {
     try {
-        const res: AxiosResponse = await client.get(url);
+        console.log(url, params.id)
+        const res: AxiosResponse = await client.get(url, {params: params });
+        console.log("res -> ",res)
         return res.data;
     } catch (error: any) {
         throw error;

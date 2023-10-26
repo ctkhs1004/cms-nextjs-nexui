@@ -1,41 +1,44 @@
 "use client"
-import {getApi} from "@/utils/httpRequest";
-import url from "../api/url";
-import {Contents} from "@/types"
+import {getApi, getUserApi} from "@/utils/httpRequest"
+import url from "@/app/api/url";
+import {Contents} from "@/types";
 import {useEffect, useState} from "react";
-import {Card, CardHeader, CardBody, CardFooter, Avatar, Button} from "@nextui-org/react";
-import {Loading} from "@/components/Loading/index"
-async function getContentsData(): Promise<Contents[]> {
-    const data = await getApi(url.getContents);
-    const contentsData: Contents[] = data.contents.map((item: any) => ({
+import {Loading} from "../Loading";
+import {Card, CardBody, CardFooter, CardHeader} from "react-bootstrap";
+import {Avatar} from "@nextui-org/react";
+import {useSession} from "next-auth/react";
+
+export async function getUserContents(id: string) {
+    const data = await getUserApi(url.getUserContents, {id});
+    console.log(id)
+    console.log("<<<<<<<<<<<<<<<<<< data", data)
+    const result: Contents[] = data.map((item: any) => ({
         id: item.id,
         name: item.name,
         message: item.message,
         post_dt: item.post_dt,
         goodMark: item.goodMark,
-        img: item.img,
+        img: item.img
     }))
-    console.log(contentsData)
-    return contentsData;
+    return result;
 }
 
-const Contents = () => {
-    const [apiContents, setApiContents] = useState<Contents[] | null>();
+export default function ProfileUserContents() {
+    const [userContents, setUserContents] = useState<Contents[]>()
     useEffect(() => {
-        const fetchData = async () => {
-            const contentsData = await getContentsData();
-            setApiContents(contentsData)
+        const axiosGet = async () => {
+            const res = await getUserContents("001");
+            setUserContents(res)
         }
-        fetchData();
+        axiosGet();
+        console.log(userContents)
     }, []);
-
-
-    if (!apiContents || apiContents.length === 0) {
+    if (!userContents) {
         return <Loading/>;
     }
     return (
         <div className="justify-center">
-            {apiContents?.map((item, index) => (
+            {userContents?.map((item, index) => (
                 <div className="py-5" key={index}>
                     <Card className="max-w-[640px]">
                         <CardHeader className="justify-between">
@@ -66,7 +69,6 @@ const Contents = () => {
                 </div>
             ))}
         </div>
-
     )
 }
-export default Contents;
+

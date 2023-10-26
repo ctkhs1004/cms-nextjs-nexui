@@ -26,9 +26,9 @@ app.get('/api/getUserAuth/:email', (req, res) => {
 
 app.post('/api/postUserKey/', (req, res) => {
     const response = require('./res/key.json');
-    console.log("req -> ",req.body.key)
-    console.log("res -> ",response.data.key)
-    if(req.body.key !== response.data.key){
+    console.log("req -> ", req.body.key)
+    console.log("res -> ", response.data.key)
+    if (req.body.key !== response.data.key) {
         throw new Error("Error Request parameter")
     }
     res.status(200).json(response);
@@ -40,11 +40,21 @@ app.get('/api/getContents', (req, res) => {
     res.status(200).json(mockData);
 })
 
-app.get('/api/getUserBio/:id',(req,res) => {
+app.get('/api/getContents/:id', (req, res) => {
+    console.log("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
+    console.log("req -> ", req.params.id)
+    const mockDataLists = require('./res/contentsData.json');
+    let mockArray = mockDataLists.contents
+    const result = mockArray.filter(mockData => mockData.id === req.params.id);
+    console.log("result -> ", result)
+    res.status(200).json(result);
+});
+
+app.get('/api/getUserBio/:id', (req, res) => {
     const mockData = require('./res/key.json')
     res.status(200).json(mockData);
 })
-app.get('/api/getUserBio',(req,res) => {
+app.get('/api/getUserBio', (req, res) => {
     const key = req.params.id
     const mockData = require('./res/key.json')
     res.status(200).json(mockData);
