@@ -16,12 +16,12 @@ const ProfilePage = () => {
     return (
         <div className="flex justify-center items-center py-7">
             <section className="body flex-grow-1 px-sm-2 mb-4 ">
-                <div className="bg-gray-900 rounded-2xl flex justify-center items-center py-7">
+                <div className="rounded-2xl flex justify-center items-center py-7">
                     <Profile/>
                 </div>
                 <div className="justify-center items-center py-7">
                     <h4 className="justify-center">Posts</h4>
-                    <ProfileUserContents session={session?.data?.user?.id}/>
+                    <ProfileUserContents/>
                 </div>
             </section>
 

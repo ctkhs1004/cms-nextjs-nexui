@@ -5,7 +5,7 @@ import {getApi} from "@/utils/httpRequest";
 import {Avatar} from "@nextui-org/react";
 import {useSession} from "next-auth/react";
 import {useEffect, useState} from "react";
-import {Card, CardBody, CardFooter, CardHeader} from "react-bootstrap";
+import {Card, CardBody, CardFooter, CardHeader} from "@nextui-org/react";
 import url from "@/app/api/url";
 import {Loading} from "../Loading";
 
@@ -36,8 +36,8 @@ export default function Profile() {
     }
 
     return (
-        <div className="w-96 h-80 min-h-full min-w-full">
-            <Card>
+        <div className="justify-center">
+            <Card className="max-w-[640px]">
                 <CardHeader className="justify-between pl-4">
                     <div className="flex gap-5">
                         <Avatar isBordered radius="full" size="md"

@@ -4,7 +4,7 @@ import url from "@/app/api/url";
 import {Contents} from "@/types";
 import {useEffect, useState} from "react";
 import {Loading} from "../Loading";
-import {Card, CardBody, CardFooter, CardHeader} from "react-bootstrap";
+import {Card, CardBody, CardFooter, CardHeader} from "@nextui-org/react";
 import {Avatar} from "@nextui-org/react";
 import {useSession} from "next-auth/react";
 
@@ -21,17 +21,18 @@ export async function getUserContents(id: string) {
     return result;
 }
 
-export default function ProfileUserContents(sessionProp: any) {
+export default function ProfileUserContents() {
     const [userContents, setUserContents] = useState<Contents[]>()
-    console.log(sessionProp.session)
+    const session = useSession();
+    console.log("User Contensts session id ->  ", session?.data?.user?.id)
     useEffect(() => {
         const axiosGet = async () => {
-            const res = await getUserContents(sessionProp.session);
+            const res = await getUserContents(session?.data?.user?.id);
             setUserContents(res)
         }
         axiosGet();
         console.log(userContents)
-    }, []);
+    });
  
     return (
         <div className="justify-center">

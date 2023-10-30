@@ -19,9 +19,15 @@ app.get('/api/getUserAuth', (req, res) => {
 })
 
 //ログインユーザー取得用
-app.get('/api/getUserAuth/:email', (req, res) => {
-    const mockData = require('./res/db.json');
-    res.status(200).json(mockData);
+app.get('/api/getCurrentUser/', (req, res) => {
+    const mockData = require('./res/key.json');
+    const data = mockData.data;
+    console.log(req.query.id)
+    console.log("data -> ", data)
+    if(data.id !== req.query.id){
+        throw new Error("Error Request parameter")
+    }
+    res.status(200).json(data);
 })
 
 app.post('/api/postUserKey/', (req, res) => {

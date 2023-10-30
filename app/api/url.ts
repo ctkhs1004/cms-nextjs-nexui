@@ -9,11 +9,11 @@ const url: keyMap = {
     getUserAuth: '/api/getUserAuth',
     getContents: '/api/getContents',
     getUserContents: '/api/getUserContents/',
-    getCurrentUserInfo: '/api/getUserAuth/:email',
+    getCurrentUser: '/api/getCurrentUser/',
     getUserList: '/api/getUserList',
     getChartsData: '/api/getChartsData',
     postUserKey: '/api/postUserKey/',
-    getUserBio: '/api/getUserBio/:key'
+    getUserBio: '/api/getUserBio/'
 };
 
 export default url;
